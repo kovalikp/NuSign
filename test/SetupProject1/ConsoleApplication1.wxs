@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="ConsoleApplication1.Binaries">
+            <Component Id="cmp2026AD3C9131E18F97A362CA8C8598B6" Guid="*">
+                <File Id="filC077A3B03025CD71442DBBEC7D198AF1" Source="$(var.ConsoleApplication1.TargetDir)\ConsoleApplication1.exe" />
+            </Component>
+            <Component Id="cmp9594B1BF3B08A3EE9DF5A002D18F593B" Guid="*">
+                <File Id="fil57799D000561100C069A5606797C669A" Source="$(var.ConsoleApplication1.TargetDir)\ConsoleApplication1.exe.config" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ConsoleApplication1.Binaries">
+            <ComponentRef Id="cmp2026AD3C9131E18F97A362CA8C8598B6" />
+            <ComponentRef Id="cmp9594B1BF3B08A3EE9DF5A002D18F593B" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ConsoleApplication1.Satellites" />
+    </Fragment>
+</Wix>

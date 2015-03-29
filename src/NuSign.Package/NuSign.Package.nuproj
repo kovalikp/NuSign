@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build\NuSign.csproj.targets" />
+    <Content Include="build\NuSign.targets" />
+    <Content Include="build\NuSign.props" />
+    <Content Include="build\NuSign.wixproj.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NuSign.Tasks\NuSign.Tasks.csproj">
+      <PackageDirectory>Build</PackageDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>70577df4-2934-46d4-9d3c-8ad7c16f32f0</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NuProjPath Condition=" '$(NuProjPath)' == '' ">..\..\NuProj\</NuProjPath>
+  </PropertyGroup>
+  <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
+  <PropertyGroup Label="Configuration">
+    <Id>NuSign</Id>
+    <Version>0.1.0</Version>
+    <Title>NuSign</Title>
+    <Authors>kovalikp</Authors>
+    <Owners>kovalikp</Owners>
+    <Summary>Signs project output using SignTool during build.</Summary>
+    <Description>Signs project output using SignTool during build.</Description>
+    <ReleaseNotes>
+    </ReleaseNotes>
+    <ProjectUrl>https://github.com/kovalikp/NuSign</ProjectUrl>
+    <LicenseUrl>https://github.com/kovalikp/NuSign/blob/master/LICENSE</LicenseUrl>
+    <Copyright>Copyright © kovalikp</Copyright>
+    <Tags>signtool</Tags>
+    <MinClientVersion>
+    </MinClientVersion>
+    <GenerateSymbolPackage>true</GenerateSymbolPackage>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+  </PropertyGroup>
+  <Import Project="$(NuProjPath)\NuProj.targets" />
+  <Target Name="HackDependencies" AfterTargets="GetPackageDependencies">
+    <ItemGroup>
+      <Dependency Remove="@(Dependency)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="CopyPackage" AfterTargets="Build">
+    <MakeDir Directories="..\..\test\source" />
+    <Copy SourceFiles="$(NuGetOutputPath)" DestinationFolder="..\..\test\source" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,19 @@
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Mixed Platforms</Platform>
+    <SignCertificateFile>$(MSBuildThisFileDirectory)test\cert\NuSingTest.pfx</SignCertificateFile>
+  </PropertyGroup>
+  
+  <Target Name="Build">
+    <RemoveDir Directories="packages" />
+    
+    <MSBuild Projects="NuSign.sln" 
+             Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+
+    <Exec Command=".nuget\NuGet.exe restore NuSign.test.sln -ConfigFile .nuget\NuGet.Config" />
+    
+    <MSBuild Projects="NuSign.test.sln" 
+             Properties="Configuration=$(Configuration);Platform=$(Platform);SignOutput=true;SignCertificateFile=$(SignCertificateFile)" />
+  </Target>
+</Project>

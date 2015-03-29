@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="Bootstrapper1" Version="1.0.0.0" Manufacturer="NuSign" UpgradeCode="1dff4a01-53fb-4d4b-95f2-5fb7ab33502e">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+    <Chain>
+      <MsiPackage SourceFile="$(var.SetupProject1.TargetPath)" />
+    </Chain>
+  </Bundle>
+</Wix>

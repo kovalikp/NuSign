@@ -156,9 +156,11 @@ ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
 *~
+*.cer
 *.dbmdl
 *.dbproj.schemaview
 *.pfx
+*.pvk
 *.publishsettings
 node_modules/
 bower_components/
