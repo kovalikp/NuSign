@@ -16,4 +16,8 @@
     <MSBuild Projects="NuSign.test.sln" 
              Properties="Configuration=$(Configuration);Platform=$(Platform);SignOutput=true;SignCertificateFile=$(SignCertificateFile)" />
   </Target>
+
+  <Target Name="Harvest">
+    <Exec Command="heat project test\ConsoleApplication1\ConsoleApplication1.csproj -out test\SetupProject1\ConsoleApplication1.wxs -ag -pog Binaries -pog Satellites" />
+  </Target>
 </Project>

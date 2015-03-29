@@ -22,6 +22,7 @@
         <Directory Id="ManufacturerFolder" Name="NuSign">
           <Directory Id="INSTALLFOLDER" Name="SetupProject1">
             <Directory Id="ConsoleApplication1.Binaries" />
+            <Directory Id="ConsoleApplication1.Satellites" />
           </Directory>
         </Directory>
       </Directory>

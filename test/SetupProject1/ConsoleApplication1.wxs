@@ -17,6 +17,20 @@
         </ComponentGroup>
     </Fragment>
     <Fragment>
-        <ComponentGroup Id="ConsoleApplication1.Satellites" />
+        <DirectoryRef Id="ConsoleApplication1.Satellites">
+            <Directory Id="dirBDF0487C4AAFB6DBDF3BAA0F386B4901" Name="sk-SK" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ConsoleApplication1.Satellites">
+            <ComponentRef Id="cmpC8659D71DB27EAA980F1572AA7068B2B" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dirBDF0487C4AAFB6DBDF3BAA0F386B4901">
+            <Component Id="cmpC8659D71DB27EAA980F1572AA7068B2B" Guid="*">
+                <File Id="fil850E63CCA1764C4EFA08B1EB7F94C2F9" Source="$(var.ConsoleApplication1.TargetDir)\sk-SK\ConsoleApplication1.resources.dll" />
+            </Component>
+        </DirectoryRef>
     </Fragment>
 </Wix>
