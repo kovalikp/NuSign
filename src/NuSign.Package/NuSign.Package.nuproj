@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="build\NuSign.csproj.targets" />
+    <Content Include="build\NuSign.common.targets" />
     <Content Include="build\NuSign.targets" />
     <Content Include="build\NuSign.props" />
     <Content Include="build\NuSign.wixproj.targets" />

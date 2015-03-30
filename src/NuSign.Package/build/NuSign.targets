@@ -2,8 +2,12 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask AssemblyFile="NuSign.Tasks.dll" TaskName="SignTool" />
   
-  <Import Project="NuSign.csproj.targets"
-          Condition=" '$(MSBuildProjectExtension)' == '.csproj' And $(SignOutput)" />
-  <Import Project="NuSign.wixproj.targets"
-          Condition=" '$(MSBuildProjectExtension)' == '.wixproj' And $(SignOutput)" />
+  <PropertyGroup>
+    <NuSignImport Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">NuSign.common.targets</NuSignImport>
+    <NuSignImport Condition=" '$(MSBuildProjectExtension)' == '.vbproj' ">NuSign.common.targets</NuSignImport>
+    <NuSignImport Condition=" '$(MSBuildProjectExtension)' == '.wixproj' ">NuSign.wixproj.targets</NuSignImport>
+  </PropertyGroup>
+  
+  <Import Project="$(NuSignImport)"
+          Condition=" $(SignOutput) And Exists('$(NuSignImport)') " />
 </Project>
